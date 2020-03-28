@@ -1,0 +1,19 @@
+{
+  "name": "parcel-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "rm -rf ./dist && parcel serve src/pages/*/*/*.html --no-cache ",
+    "build": "parcel build src/pages/*/*/*.html --no-cache -d build  --no-content-hash --no-minify  --no-source-maps --detailed-report"
+  },
+  "author": "niuxinyu",
+  "license": "MIT",
+  "dependencies": {
+    "swiper": "^5.3.6"
+  },
+  "devDependencies": {
+    "stylus": "^0.54.7"
+  }
+}
