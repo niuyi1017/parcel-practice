@@ -6,17 +6,18 @@ import '../index/index.styl'
 // import 'babel-polyfill'
 // import Swiper from "swiper"
 
- async function loadModule (moduleName) {
-  const module = await import(moduleName)
-  console.log(module)
-  return module.default
-}
+//  async function loadModule (moduleName) {
+//   const module = await import(moduleName)
+//   console.log(module)
+//   return module.default
+// }
 
-window.onload = async () => {
-  const Swiper1 = await import('swiper')
-  const Swiper = Swiper1.default
+window.onload =  () => {
+  // const Swiper1 = await import('swiper')
+  // const Swiper = Swiper1.default
   // const Swiper = await loadModule('swiper')
-  console.log(Swiper)
+
+  // console.log(Swiper)
   layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element'], function() {
     var laydate = layui.laydate //日期
     ,laypage = layui.laypage //分页
@@ -30,25 +31,27 @@ window.onload = async () => {
     layer.msg('Hello World');
   });
 
-  
-    var mySwiper = new Swiper ('.swiper-container', {
-      direction: 'vertical', // 垂直切换选项
-      loop: true, // 循环模式选项
-      
-      // 如果需要分页器
-      pagination: {
-        el: '.swiper-pagination',
-      },
-      
-      // 如果需要前进后退按钮
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      
-      // 如果需要滚动条
-      scrollbar: {
-        el: '.swiper-scrollbar',
-      },
-    })        
-  }
+  import('swiper').then(module => {
+      const Swiper = module.default
+      var mySwiper = new Swiper ('.swiper-container', {
+        direction: 'vertical', // 垂直切换选项
+        loop: true, // 循环模式选项
+        
+        // 如果需要分页器
+        pagination: {
+          el: '.swiper-pagination',
+        },
+        
+        // 如果需要前进后退按钮
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        
+        // 如果需要滚动条
+        scrollbar: {
+          el: '.swiper-scrollbar',
+        },
+      })        
+    })
+    }
