@@ -122,9 +122,10 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 (function init(window) {
   // 0. 处理需要区分开发环境和生成环境的特殊指令
   if ("development" !== 'production') {//开发环境
+    //do something
   } else {} // 生产环境
     // do something
-    // 1.判断PC端、移动端
+    // 1.判断PC端、移动端,并跳转到对应的首页
 
 
   window.addEventListener('resize', function () {
@@ -167,7 +168,7 @@ function ScrrenWidth() {
 
   if (mobile) {
     if (url.indexOf("/m") < 0) {
-      window.location.href = "http://".concat(window.location.host, "/m/mindex/index.html");
+      window.location.href = "http://".concat(window.location.host, "/m/index/index.html");
     }
   } else {
     if (url.indexOf("/pc") < 0) {
@@ -199,7 +200,7 @@ function loadIconfont(iconUrl) {
   linkTag.setAttribute('type', 'text/css');
   head.appendChild(linkTag);
 }
-},{}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{}],"C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -231,7 +232,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+},{}],"C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -266,12 +267,12 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"pc/index/index.styl":[function(require,module,exports) {
+},{"./bundle-url":"C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"pc/index/index.styl":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-loader.js":[function(require,module,exports) {
+},{"_css_loader":"C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-loader.js":[function(require,module,exports) {
 var getBundleURL = require('./bundle-url').getBundleURL;
 
 function loadBundlesLazy(bundles) {
@@ -354,71 +355,73 @@ LazyPromise.prototype.catch = function (onError) {
   if (this.promise === null) this.promise = new Promise(this.executor);
   return this.promise.catch(onError);
 };
-},{"./bundle-url":"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"pc/index/index.js":[function(require,module,exports) {
+},{"./bundle-url":"C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../api/config.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.initAxios = initAxios;
+
+function initAxios() {
+  var moduleName = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "axios";
+  return require("_bundle_loader")(require.resolve('axios')).then(function (axios) {
+    // 对axios进行配置操作
+    return Promise.resolve(axios);
+  });
+}
+},{"_bundle_loader":"C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-loader.js","axios":[["axios.c95639a7.js","../../node_modules/axios/index.js"],"axios.c95639a7.js.map","../../node_modules/axios/index.js"]}],"../api/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getIndex = getIndex;
+
+var _config = require("./config");
+
+function getIndex(url) {
+  return (0, _config.initAxios)().then(function (axios) {
+    return axios.get(url).then(function (res) {
+      return Promise.resolve(res.data);
+    });
+  });
+}
+},{"./config":"../api/config.js"}],"pc/index/index.js":[function(require,module,exports) {
 "use strict";
 
 require("../../../main");
 
 require("../index/index.styl");
 
-// import { loadModule } from "../../../common/Utils"
-// import { async } from '../../../../dist/index.e0d146f8'
-// import 'babel-polyfill'
-// import Swiper from "swiper"
-//  async function loadModule (moduleName) {
-//   const module = await import(moduleName)
-//   console.log(module)
-//   return module.default
-// }
+var _index2 = require("../../../api/index");
+
 window.onload = function () {
-  // const Swiper1 = await import('swiper')
-  // const Swiper = Swiper1.default
-  // const Swiper = await loadModule('swiper')
-  // console.log(Swiper)
-  layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element'], function () {
-    var laydate = layui.laydate //日期
-    ,
-        laypage = layui.laypage //分页
-    ,
-        layer = layui.layer //弹层
-    ,
-        table = layui.table //表格
-    ,
-        carousel = layui.carousel //轮播
-    ,
-        upload = layui.upload //上传
+  // 引入并使用layui相关组件
+  layui.use(['layer', 'element'], function () {
+    var layer = layui.layer //弹层
     ,
         element = layui.element; //元素操作 等等...
 
     /*layer弹出一个示例*/
 
     layer.msg('Hello World');
-  });
+  }); //异步操作
+
+  (0, _index2.getIndex)('http://sditer.com:8088/mall/api/mallListByCatApi.php?catId=565').then(function (res) {
+    console.log(res);
+  }); // 引入并使用npm包
 
   require("_bundle_loader")(require.resolve('swiper')).then(function (module) {
     var Swiper = module.default;
     var mySwiper = new Swiper('.swiper-container', {
       direction: 'vertical',
-      // 垂直切换选项
-      loop: true,
-      // 循环模式选项
-      // 如果需要分页器
-      pagination: {
-        el: '.swiper-pagination'
-      },
-      // 如果需要前进后退按钮
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
-      },
-      // 如果需要滚动条
-      scrollbar: {
-        el: '.swiper-scrollbar'
-      }
+      autoplay: true //可选选项，自动滑动
+
     });
   });
 };
-},{"../../../main":"../main.js","../index/index.styl":"pc/index/index.styl","_bundle_loader":"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-loader.js","swiper":[["swiper.esm.bundle.62f68f22.js","../../node_modules/swiper/js/swiper.esm.bundle.js"],"swiper.esm.bundle.62f68f22.js.map","../../node_modules/swiper/js/swiper.esm.bundle.js"]}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"../../../main":"../main.js","../index/index.styl":"pc/index/index.styl","../../../api/index":"../api/index.js","_bundle_loader":"C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-loader.js","swiper":[["swiper.esm.bundle.62f68f22.js","../../node_modules/swiper/js/swiper.esm.bundle.js"],"swiper.esm.bundle.62f68f22.js.map","../../node_modules/swiper/js/swiper.esm.bundle.js"]}],"C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -446,7 +449,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33601" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49922" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -622,7 +625,7 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/loaders/browser/js-loader.js":[function(require,module,exports) {
+},{}],"C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/loaders/browser/js-loader.js":[function(require,module,exports) {
 module.exports = function loadJSBundle(bundle) {
   return new Promise(function (resolve, reject) {
     var script = document.createElement('script');
@@ -645,6 +648,6 @@ module.exports = function loadJSBundle(bundle) {
   });
 };
 },{}],0:[function(require,module,exports) {
-var b=require("../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-loader.js");b.register("js",require("../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/loaders/browser/js-loader.js"));
-},{}]},{},["../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js",0,"pc/index/index.js"], null)
+var b=require("C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-loader.js");b.register("js",require("C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/loaders/browser/js-loader.js"));
+},{}]},{},["C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js",0,"pc/index/index.js"], null)
 //# sourceMappingURL=/index.e0d146f8.js.map

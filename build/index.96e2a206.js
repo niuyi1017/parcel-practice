@@ -167,7 +167,7 @@ function ScrrenWidth() {
 
   if (mobile) {
     if (url.indexOf("/m") < 0) {
-      window.location.href = "http://".concat(window.location.host, "/m/mindex/index.html");
+      window.location.href = "http://".concat(window.location.host, "/m/index/index.html");
     }
   } else {
     if (url.indexOf("/pc") < 0) {
@@ -199,12 +199,144 @@ function loadIconfont(iconUrl) {
   linkTag.setAttribute('type', 'text/css');
   head.appendChild(linkTag);
 }
-},{}],"P89C":[function(require,module,exports) {
+},{}],"cqV9":[function(require,module,exports) {
+
+},{}],"olRd":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"W3j6":[function(require,module,exports) {
+var getBundleURL = require('./bundle-url').getBundleURL;
+
+function loadBundlesLazy(bundles) {
+  if (!Array.isArray(bundles)) {
+    bundles = [bundles];
+  }
+
+  var id = bundles[bundles.length - 1];
+
+  try {
+    return Promise.resolve(require(id));
+  } catch (err) {
+    if (err.code === 'MODULE_NOT_FOUND') {
+      return new LazyPromise(function (resolve, reject) {
+        loadBundles(bundles.slice(0, -1)).then(function () {
+          return require(id);
+        }).then(resolve, reject);
+      });
+    }
+
+    throw err;
+  }
+}
+
+function loadBundles(bundles) {
+  return Promise.all(bundles.map(loadBundle));
+}
+
+var bundleLoaders = {};
+
+function registerBundleLoader(type, loader) {
+  bundleLoaders[type] = loader;
+}
+
+module.exports = exports = loadBundlesLazy;
+exports.load = loadBundles;
+exports.register = registerBundleLoader;
+var bundles = {};
+
+function loadBundle(bundle) {
+  var id;
+
+  if (Array.isArray(bundle)) {
+    id = bundle[1];
+    bundle = bundle[0];
+  }
+
+  if (bundles[bundle]) {
+    return bundles[bundle];
+  }
+
+  var type = (bundle.substring(bundle.lastIndexOf('.') + 1, bundle.length) || bundle).toLowerCase();
+  var bundleLoader = bundleLoaders[type];
+
+  if (bundleLoader) {
+    return bundles[bundle] = bundleLoader(getBundleURL() + bundle).then(function (resolved) {
+      if (resolved) {
+        module.bundle.register(id, resolved);
+      }
+
+      return resolved;
+    }).catch(function (e) {
+      delete bundles[bundle];
+      throw e;
+    });
+  }
+}
+
+function LazyPromise(executor) {
+  this.executor = executor;
+  this.promise = null;
+}
+
+LazyPromise.prototype.then = function (onSuccess, onError) {
+  if (this.promise === null) this.promise = new Promise(this.executor);
+  return this.promise.then(onSuccess, onError);
+};
+
+LazyPromise.prototype.catch = function (onError) {
+  if (this.promise === null) this.promise = new Promise(this.executor);
+  return this.promise.catch(onError);
+};
+},{"./bundle-url":"olRd"}],"y2OC":[function(require,module,exports) {
 "use strict";
 
 require("../../../main");
 
+require("../index/index.styl");
+
+// import { loadModule } from "../../../common/Utils"
+// import { async } from '../../../../dist/index.e0d146f8'
+// import 'babel-polyfill'
+// import Swiper from "swiper"
+//  async function loadModule (moduleName) {
+//   const module = await import(moduleName)
+//   console.log(module)
+//   return module.default
+// }
 window.onload = function () {
+  // const Swiper1 = await import('swiper')
+  // const Swiper = Swiper1.default
+  // const Swiper = await loadModule('swiper')
+  // console.log(Swiper)
   layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element'], function () {
     var laydate = layui.laydate //日期
     ,
@@ -224,5 +356,52 @@ window.onload = function () {
 
     layer.msg('Hello World');
   });
+
+  require("_bundle_loader")(require.resolve('swiper')).then(function (module) {
+    var Swiper = module.default;
+    var mySwiper = new Swiper('.swiper-container', {
+      direction: 'vertical',
+      // 垂直切换选项
+      loop: true,
+      // 循环模式选项
+      // 如果需要分页器
+      pagination: {
+        el: '.swiper-pagination'
+      },
+      // 如果需要前进后退按钮
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+      // 如果需要滚动条
+      scrollbar: {
+        el: '.swiper-scrollbar'
+      }
+    });
+  });
 };
-},{"../../../main":"yIHR"}]},{},["P89C"], null)
+},{"../../../main":"yIHR","../index/index.styl":"cqV9","_bundle_loader":"W3j6","swiper":[["swiper.esm.bundle.62f68f22.js","JDmx"],"JDmx"]}],"HC8h":[function(require,module,exports) {
+module.exports = function loadJSBundle(bundle) {
+  return new Promise(function (resolve, reject) {
+    var script = document.createElement('script');
+    script.async = true;
+    script.type = 'text/javascript';
+    script.charset = 'utf-8';
+    script.src = bundle;
+
+    script.onerror = function (e) {
+      script.onerror = script.onload = null;
+      reject(e);
+    };
+
+    script.onload = function () {
+      script.onerror = script.onload = null;
+      resolve();
+    };
+
+    document.getElementsByTagName('head')[0].appendChild(script);
+  });
+};
+},{}],0:[function(require,module,exports) {
+var b=require("W3j6");b.register("js",require("HC8h"));
+},{}]},{},[0,"y2OC"], null)

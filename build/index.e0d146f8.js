@@ -167,7 +167,7 @@ function ScrrenWidth() {
 
   if (mobile) {
     if (url.indexOf("/m") < 0) {
-      window.location.href = "http://".concat(window.location.host, "/m/mindex/index.html");
+      window.location.href = "http://".concat(window.location.host, "/m/index/index.html");
     }
   } else {
     if (url.indexOf("/pc") < 0) {
@@ -201,7 +201,7 @@ function loadIconfont(iconUrl) {
 }
 },{}],"VW7O":[function(require,module,exports) {
 
-},{}],"JKJR":[function(require,module,exports) {
+},{}],"olRd":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -233,7 +233,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],"XgI1":[function(require,module,exports) {
+},{}],"W3j6":[function(require,module,exports) {
 var getBundleURL = require('./bundle-url').getBundleURL;
 
 function loadBundlesLazy(bundles) {
@@ -316,71 +316,73 @@ LazyPromise.prototype.catch = function (onError) {
   if (this.promise === null) this.promise = new Promise(this.executor);
   return this.promise.catch(onError);
 };
-},{"./bundle-url":"JKJR"}],"OIPc":[function(require,module,exports) {
+},{"./bundle-url":"olRd"}],"MNj8":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.initAxios = initAxios;
+
+function initAxios() {
+  var moduleName = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "axios";
+  return require("_bundle_loader")(require.resolve('axios')).then(function (axios) {
+    // 对axios进行配置操作
+    return Promise.resolve(axios);
+  });
+}
+},{"_bundle_loader":"W3j6","axios":[["axios.c95639a7.js","uj17"],"uj17"]}],"kIMk":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getIndex = getIndex;
+
+var _config = require("./config");
+
+function getIndex(url) {
+  return (0, _config.initAxios)().then(function (axios) {
+    return axios.get(url).then(function (res) {
+      return Promise.resolve(res.data);
+    });
+  });
+}
+},{"./config":"MNj8"}],"OIPc":[function(require,module,exports) {
 "use strict";
 
 require("../../../main");
 
 require("../index/index.styl");
 
-// import { loadModule } from "../../../common/Utils"
-// import { async } from '../../../../dist/index.e0d146f8'
-// import 'babel-polyfill'
-// import Swiper from "swiper"
-//  async function loadModule (moduleName) {
-//   const module = await import(moduleName)
-//   console.log(module)
-//   return module.default
-// }
+var _index2 = require("../../../api/index");
+
 window.onload = function () {
-  // const Swiper1 = await import('swiper')
-  // const Swiper = Swiper1.default
-  // const Swiper = await loadModule('swiper')
-  // console.log(Swiper)
-  layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element'], function () {
-    var laydate = layui.laydate //日期
-    ,
-        laypage = layui.laypage //分页
-    ,
-        layer = layui.layer //弹层
-    ,
-        table = layui.table //表格
-    ,
-        carousel = layui.carousel //轮播
-    ,
-        upload = layui.upload //上传
+  // 引入并使用layui相关组件
+  layui.use(['layer', 'element'], function () {
+    var layer = layui.layer //弹层
     ,
         element = layui.element; //元素操作 等等...
 
     /*layer弹出一个示例*/
 
     layer.msg('Hello World');
-  });
+  }); //异步操作
+
+  (0, _index2.getIndex)('http://sditer.com:8088/mall/api/mallListByCatApi.php?catId=565').then(function (res) {
+    console.log(res);
+  }); // 引入并使用npm包
 
   require("_bundle_loader")(require.resolve('swiper')).then(function (module) {
     var Swiper = module.default;
     var mySwiper = new Swiper('.swiper-container', {
       direction: 'vertical',
-      // 垂直切换选项
-      loop: true,
-      // 循环模式选项
-      // 如果需要分页器
-      pagination: {
-        el: '.swiper-pagination'
-      },
-      // 如果需要前进后退按钮
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
-      },
-      // 如果需要滚动条
-      scrollbar: {
-        el: '.swiper-scrollbar'
-      }
+      autoplay: true //可选选项，自动滑动
+
     });
   });
 };
-},{"../../../main":"yIHR","../index/index.styl":"VW7O","_bundle_loader":"XgI1","swiper":[["swiper.esm.bundle.62f68f22.js","JDmx"],"JDmx"]}],"ckua":[function(require,module,exports) {
+},{"../../../main":"yIHR","../index/index.styl":"VW7O","../../../api/index":"kIMk","_bundle_loader":"W3j6","swiper":[["swiper.esm.bundle.62f68f22.js","JDmx"],"JDmx"]}],"HC8h":[function(require,module,exports) {
 module.exports = function loadJSBundle(bundle) {
   return new Promise(function (resolve, reject) {
     var script = document.createElement('script');
@@ -403,5 +405,5 @@ module.exports = function loadJSBundle(bundle) {
   });
 };
 },{}],0:[function(require,module,exports) {
-var b=require("XgI1");b.register("js",require("ckua"));
+var b=require("W3j6");b.register("js",require("HC8h"));
 },{}]},{},[0,"OIPc"], null)

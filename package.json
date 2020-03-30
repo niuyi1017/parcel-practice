@@ -5,13 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "rm -rf ./dist && parcel serve src/pages/*/*/*.html --no-cache ",
+    "dev": " parcel serve src/pages/*/*/*.html --no-cache ",
     "build": "parcel build src/pages/*/*/*.html --no-cache -d build  --no-content-hash --no-minify  --no-source-maps --detailed-report"
   },
   "author": "niuxinyu",
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.9.2",
+    "axios": "^0.19.2",
     "babel-polyfill": "^6.26.0",
     "swiper": "^5.3.6"
   },
