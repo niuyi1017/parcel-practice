@@ -23,7 +23,10 @@ window.onload = () => {
     const Swiper = module.default
     var mySwiper = new Swiper('.swiper-container', {
       direction: 'vertical', 
-      autoplay: true,//可选选项，自动滑动
+      autoplay: true
       })        
     })
+      
+      
+
   }

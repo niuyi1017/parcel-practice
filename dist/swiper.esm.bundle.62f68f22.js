@@ -10380,7 +10380,7 @@ if (typeof Swiper.use === 'undefined') {
 Swiper.use(components);
 var _default = Swiper;
 exports.default = _default;
-},{"dom7/dist/dom7.modular":"../../node_modules/dom7/dist/dom7.modular.js","ssr-window":"../../node_modules/ssr-window/dist/ssr-window.esm.js"}],"C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"dom7/dist/dom7.modular":"../../node_modules/dom7/dist/dom7.modular.js","ssr-window":"../../node_modules/ssr-window/dist/ssr-window.esm.js"}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -10408,7 +10408,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49922" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34447" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -10584,5 +10584,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","../../node_modules/swiper/js/swiper.esm.bundle.js"], null)
+},{}]},{},["../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","../../node_modules/swiper/js/swiper.esm.bundle.js"], null)
 //# sourceMappingURL=/swiper.esm.bundle.62f68f22.js.map
