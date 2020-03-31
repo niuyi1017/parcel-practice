@@ -122,7 +122,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 (function init(window) {
   // 0. 处理需要区分开发环境和生成环境的特殊指令
   if ("development" !== 'production') {//开发环境
-    //do something
+    // do something
   } else {} // 生产环境
     // do something
     // 1.判断PC端、移动端,并跳转到对应的首页
@@ -131,7 +131,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   window.addEventListener('resize', function () {
     ScrrenWidth();
   });
-  ScrrenWidth(); // 2.引入layui、 阿里图标库
+  ScrrenWidth(); // 2.引入全局js、css
 
   loadLayui('https://www.layuicdn.com/layui/layui.js', 'https://www.layuicdn.com/layui/css/layui.css');
   loadIconfont('//at.alicdn.com/t/font_1633596_94e5cgu2ah.css'); // 3. 注册全局方法
@@ -168,11 +168,11 @@ function ScrrenWidth() {
 
   if (mobile) {
     if (url.indexOf("/m") < 0) {
-      window.location.href = "http://".concat(window.location.host, "/m/index/index.html");
+      window.location.href = "".concat(window.location.protocol, "//").concat(window.location.host, "/m/index/index.html");
     }
   } else {
     if (url.indexOf("/pc") < 0) {
-      window.location.href = "http://".concat(window.location.host, "/pc/index/index.html");
+      window.location.href = "".concat(window.location.protocol, "//").concat(window.location.host, "/pc/index/index.html");
     }
   }
 }
@@ -200,7 +200,7 @@ function loadIconfont(iconUrl) {
   linkTag.setAttribute('type', 'text/css');
   head.appendChild(linkTag);
 }
-},{}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{}],"C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -232,7 +232,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+},{}],"C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -267,12 +267,12 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"pc/index/index.styl":[function(require,module,exports) {
+},{"./bundle-url":"C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"pc/index/index.styl":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-loader.js":[function(require,module,exports) {
+},{"_css_loader":"C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-loader.js":[function(require,module,exports) {
 var getBundleURL = require('./bundle-url').getBundleURL;
 
 function loadBundlesLazy(bundles) {
@@ -355,7 +355,7 @@ LazyPromise.prototype.catch = function (onError) {
   if (this.promise === null) this.promise = new Promise(this.executor);
   return this.promise.catch(onError);
 };
-},{"./bundle-url":"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../api/config.js":[function(require,module,exports) {
+},{"./bundle-url":"C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../api/config.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -370,7 +370,7 @@ function initAxios() {
     return Promise.resolve(axios);
   });
 }
-},{"_bundle_loader":"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-loader.js","axios":[["axios.c95639a7.js","../../node_modules/axios/index.js"],"axios.c95639a7.js.map","../../node_modules/axios/index.js"]}],"../api/index.js":[function(require,module,exports) {
+},{"_bundle_loader":"C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-loader.js","axios":[["axios.c95639a7.js","../../node_modules/axios/index.js"],"axios.c95639a7.js.map","../../node_modules/axios/index.js"]}],"../api/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -420,7 +420,7 @@ window.onload = function () {
     });
   });
 };
-},{"../../../main":"../main.js","../index/index.styl":"pc/index/index.styl","../../../api/index":"../api/index.js","_bundle_loader":"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-loader.js","swiper":[["swiper.esm.bundle.62f68f22.js","../../node_modules/swiper/js/swiper.esm.bundle.js"],"swiper.esm.bundle.62f68f22.js.map","../../node_modules/swiper/js/swiper.esm.bundle.js"]}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"../../../main":"../main.js","../index/index.styl":"pc/index/index.styl","../../../api/index":"../api/index.js","_bundle_loader":"C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-loader.js","swiper":[["swiper.esm.bundle.62f68f22.js","../../node_modules/swiper/js/swiper.esm.bundle.js"],"swiper.esm.bundle.62f68f22.js.map","../../node_modules/swiper/js/swiper.esm.bundle.js"]}],"C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -448,7 +448,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34447" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51177" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -624,7 +624,7 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/loaders/browser/js-loader.js":[function(require,module,exports) {
+},{}],"C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/loaders/browser/js-loader.js":[function(require,module,exports) {
 module.exports = function loadJSBundle(bundle) {
   return new Promise(function (resolve, reject) {
     var script = document.createElement('script');
@@ -647,6 +647,6 @@ module.exports = function loadJSBundle(bundle) {
   });
 };
 },{}],0:[function(require,module,exports) {
-var b=require("../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-loader.js");b.register("js",require("../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/loaders/browser/js-loader.js"));
-},{}]},{},["../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js",0,"pc/index/index.js"], null)
+var b=require("C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-loader.js");b.register("js",require("C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/loaders/browser/js-loader.js"));
+},{}]},{},["C:/Users/Lenovo/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js",0,"pc/index/index.js"], null)
 //# sourceMappingURL=/index.e0d146f8.js.map

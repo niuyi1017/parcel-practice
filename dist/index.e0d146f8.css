@@ -1,8 +1,36 @@
+.overflow-3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.overflow-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.overflow-1 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+body {
+  display: flex;
+  background: #ccc;
+}
+::placeholder {
+  color: #808080;
+}
 .swiper-container {
   width: 600px;
   height: 300px;
   background: #ccc;
   overflow: hidden;
+}
+.a {
+  color: #ccc;
 }
 
 

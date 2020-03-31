@@ -4,7 +4,7 @@
 
     // 0. 处理需要区分开发环境和生成环境的特殊指令
     if (process.env.NODE_ENV !== 'production') {      //开发环境
-        //do something
+        // do something
     } else {                                         // 生产环境
         // do something
     }
@@ -18,7 +18,7 @@
 
 
 
-    // 2.引入layui、 阿里图标库
+    // 2.引入全局js、css
     loadLayui('https://www.layuicdn.com/layui/layui.js', 'https://www.layuicdn.com/layui/css/layui.css')
     loadIconfont('//at.alicdn.com/t/font_1633596_94e5cgu2ah.css')
 
@@ -60,12 +60,12 @@ function ScrrenWidth() {
     var url = window.location.href;
     if (mobile) {
         if (url.indexOf("/m") < 0) {
-            window.location.href = `http://${window.location.host}/m/index/index.html`
+            window.location.href = `${window.location.protocol}//${window.location.host}/m/index/index.html`
         }
 
     } else {
         if (url.indexOf("/pc") < 0) {
-            window.location.href = `http://${window.location.host}/pc/index/index.html`
+            window.location.href = `${window.location.protocol}//${window.location.host}/pc/index/index.html`
         }
     }
 }
