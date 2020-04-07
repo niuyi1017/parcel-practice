@@ -11,6 +11,7 @@
 
 
     // 1.判断PC端、移动端,并跳转到对应的首页
+
     window.addEventListener('resize', function () {
         ScrrenWidth();
     })
@@ -18,36 +19,18 @@
 
 
 
-    // 2.引入全局js、css
-    loadLayui('https://www.layuicdn.com/layui/layui.js', 'https://www.layuicdn.com/layui/css/layui.css')
-    loadIconfont('//at.alicdn.com/t/font_1633596_94e5cgu2ah.css')
+    // 2.全局引入layui、iconfont 
+
+    // loadLayui('https://www.layuicdn.com/layui/layui.js', 'https://www.layuicdn.com/layui/css/layui.css')
+    // loadIconfont('//at.alicdn.com/t/font_1633596_94e5cgu2ah.css')
 
 
 
     // 3. 注册全局方法
-    window.gotoUrl = (url, newTab = false) => {
-        if (url == '-1') {
-            window.history.go(-1)
-        }
-        else if (newTab)
-            window.open(url, 'target', '')
-        else
-            window.location.href = url
-    }
-    window.callPhone = (phoneNumber) => {
-        window.location.href = `tel://${phoneNumber}`
-    }
-    window.eduToast = (text, time = 1000) => {
-        let toast = document.createElement('div')
-        toast.classList.add("toast")
-        let html = ` <p class="content">${text}</p>`
-        toast.innerHTML = html
-        document.body.appendChild(toast)
-        setTimeout(() => {
-            let toast = document.querySelector('.toast')
-            document.body.removeChild(toast)
-        }, time)
-    }
+
+    // window.globalMethod = (params) => {
+    //     console.log(params)
+    // }
 
 
 })(window)
