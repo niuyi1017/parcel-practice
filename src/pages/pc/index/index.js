@@ -26,7 +26,4 @@ window.onload = () => {
       autoplay: true
       })        
     })
-      
-      
-
   }
