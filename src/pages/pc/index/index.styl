@@ -1,17 +1,20 @@
 @import '../../../assets/styles/main.styl'
-body
-    display:  flex
-    background: #ccc
-    
-::placeholder 
-  color: gray;
 
-.swiper-container 
-    width: 600px;
-    height: 300px;
-    background: #ccc
-    overflow hidden
-
-.a
-    color: #ccc
-    
+#page
+    height 100vh
+    background: $background
+    .logo
+        height 800px
+        width: 100%
+        background: #fff
+        display: flex
+        align-items: center
+        justify-content: center
+        flex-direction: column
+        .img-wrapper
+            height 150px
+            width 150px
+            background: #ccc
+            margin-bottom: 50px
+        .more
+            margin-top: 50px

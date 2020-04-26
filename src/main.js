@@ -34,21 +34,6 @@
         else
             window.location.href = url
     }
-    window.callPhone = (phoneNumber) => {
-        window.location.href = `tel://${phoneNumber}`
-    }
-    window.eduToast = (text, time = 1000) => {
-        let toast = document.createElement('div')
-        toast.classList.add("toast")
-        let html = ` <p class="content">${text}</p>`
-        toast.innerHTML = html
-        document.body.appendChild(toast)
-        setTimeout(() => {
-            let toast = document.querySelector('.toast')
-            document.body.removeChild(toast)
-        }, time)
-    }
-
 
 })(window)
 
