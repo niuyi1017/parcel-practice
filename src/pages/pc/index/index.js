@@ -7,7 +7,7 @@ window.onload = () => {
   // 引入并使用layui相关组件
   layui.use([ 'layer', 'element'], function() {
     var layer = layui.layer //弹层
-    layer.msg('Hello World');
+    layer.msg('Hello pmp-cli');
   })
   
   //异步操作
