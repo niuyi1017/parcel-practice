@@ -20,7 +20,7 @@ window.onload = () => {
     const Swiper = module.default
     var mySwiper = new Swiper('.swiper-container', {
       direction: 'vertical', 
-      autoplay: true
+      // autoplay: true
       })        
     })
   }
