@@ -20,7 +20,7 @@
 
     // 2.引入全局js、css
     loadLayui('https://www.layuicdn.com/layui/layui.js', 'https://www.layuicdn.com/layui/css/layui.css')
-    loadIconfont('//at.alicdn.com/t/font_1633596_94e5cgu2ah.css')
+    loadIconfont('//at.alicdn.com/t/font_1829118_ov358lp1oyc.css')
 
 
 
