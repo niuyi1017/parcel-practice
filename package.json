@@ -14,7 +14,7 @@
     "@babel/runtime": "^7.9.2",
     "axios": "^0.19.2",
     "babel-polyfill": "^6.26.0",
-    "swiper": "^5.3.7"
+    "swiper": "^6.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
